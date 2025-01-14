@@ -1,0 +1,12 @@
+---
+title: "Contact"
+format: html
+---
+
+# Contact
+
+You can reach me at:
+
+- Email: fran@example.com
+- LinkedIn: [Fran's LinkedIn](https://www.linkedin.com)
+

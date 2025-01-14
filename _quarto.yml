@@ -1,0 +1,36 @@
+project:
+  type: website
+  title: "my-portfolio"
+  output-dir: _site
+
+website:
+  title: "Fran's Portfolio"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+      - text: "Projects"
+        href: "#"
+        menu:
+          - text: "Project 1"
+            href: "project1.qmd"  # Link to your first project page
+          - text: "Project 2"
+            href: "project2.qmd"  # Link to your second project page
+#      - text: "Contact"
+#        href: contact.qmd
+    right:
+      - text: "<i class='fab fa-linkedin'></i>"
+        href: "https://www.linkedin.com/in/fran-iriso"
+        target: "_blank"
+      - text: "<i class='fab fa-github'></i>"
+        href: "https://github.com/franiriso"
+        target: "_blank"
+      - text: "<i class='fas fa-envelope'></i>"
+        href: "mailto:franiriso@gmail.com"
+        target: "_blank"
+
+format:
+  html:
+    css: styles.css
