@@ -1,116 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fran Iriso - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Fran Iriso portfolio: embedded systems, robotics, autonomous systems, medical devices, and multidisciplinary engineering."
+  >
+  <title>Fran Iriso | Engineering Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+  >
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+  >
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Fran Iriso</h1>
-            <p>Electronic, Computer, Biomedical, Computer & Mechatronics Engineer</p>
-        </header>
-        
-        <nav>
-            <button class="tab-button active" data-tab="about">About</button>
-            <button class="tab-button" data-tab="resume">Resume</button>
-            <button class="tab-button" data-tab="projects">Projects</button>
-        </nav>
-        
-        <div id="about" class="tab-content active">
-            <div class="photo-placeholder">
-                <img src="placeholder-photo.jpg" alt="Fran Iriso" id="profile-photo">
-                <p>Upload your photo here</p>
-            </div>
-            <div class="summary">
-                <h2>Summary</h2>
-                <p>Engineer completing a dual Master's in Autonomous Systems and Intelligent Robots (July 2026), bringing a multidisciplinary background across robotics, transportation, and medical devices to tackle complex challenges with creativity. Internationally experienced, I combine strong technical execution with cross-cultural communication to deliver impact in diverse teams.</p>
-            </div>
-            <div class="tech-stack">
-                <h2>Tech Stack</h2>
-                <div class="tech-icons">
-                    <!-- Add icons for technologies -->
-                    <div class="tech-item">Python</div>
-                    <div class="tech-item">C++</div>
-                    <div class="tech-item">ROS</div>
-                    <div class="tech-item">Embedded Systems</div>
-                    <!-- Add more based on resume -->
-                </div>
-            </div>
-            <div class="languages">
-                <h2>Languages</h2>
-                <div class="lang-list">
-                    <div class="lang-item">Spanish – Native</div>
-                    <div class="lang-item">Catalan – Native</div>
-                    <div class="lang-item">English – Full Professional Fluency</div>
-                    <div class="lang-item">Italian – Intermediate</div>
-                    <div class="lang-item">Swedish – Beginner</div>
-                    <div class="lang-item">French – Beginner</div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="resume" class="tab-content">
-            <h2>Education</h2>
-            <div class="education">
-                <div class="edu-item">
-                    <h3>MSc: Mechatronics Engineering | GPA: 4.67/5.0</h3>
-                    <p>University of Trento (UNITN) – EIT Digital Master School Program: Autonomous Systems and Intelligent Robots</p>
-                    <p>Sep 2024 - June 2026</p>
-                    <p>Coursework: Distributed Robot Perception, Intelligent Vehicles, Path Planning</p>
-                </div>
-                <div class="edu-item">
-                    <h3>MSc: Computer Engineering | GPA: 4.67/5.0</h3>
-                    <p>Budapest University of Technology (BME) – EIT Digital Master School Program: Autonomous Systems and Intelligent Robots</p>
-                    <p>Sep 2024 – June 2026</p>
-                    <p>Coursework: Machine Learning, AI Control, Computer Vision, Robotics</p>
-                </div>
-                <div class="edu-item">
-                    <h3>Minor of Innovation and Entrepreneurship</h3>
-                    <p>University of Rennes – EIT Digital Master School</p>
-                    <p>June 2025 – July 2025</p>
-                </div>
-            </div>
-            
-            <h2>Experience</h2>
-            <div class="experience">
-                <div class="exp-item">
-                    <h3>Embedded Software Developer – Capsule Corporation – Milan, Italy</h3>
-                    <p>February 2026 – July 2026</p>
-                    <p>Develop software for satellites water-propulsion system focusing on FDIR and RTOS</p>
-                </div>
-                <div class="exp-item">
-                    <h3>Embedded Developer – Creekside AB – Stockholm, Sweden</h3>
-                    <p>June 2023 – Sep 2024</p>
-                    <p>Create software and hardware for embedded systems, collaborating with mechanical engineers to ensure seamless integration and optimal functionality within various devices and industries.</p>
-                </div>
-                <div class="exp-item">
-                    <h3>Research Engineer – Royal Institute of Technology (KTH) – Stockholm, Sweden</h3>
-                    <p>Jan 2023 – Aug 2023</p>
-                    <p>- Developed a multi-dimensional in-ear sensor project with Digital Futures.</p>
-                    <p>- Support the principal investigator in research in Medical Devices, with the collaboration of Karolinska Institutet (KI).</p>
-                </div>
-                <div class="exp-item">
-                    <h3>Mathematics Teacher – Àrea d’Estudi – Barcelona, Spain</h3>
-                    <p>July 2019 – Aug 2022</p>
-                    <p>Helped students from 15 to 23 y.o. to achieve target grades through continuous curricular support and motivation.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div id="projects" class="tab-content">
-            <h2>Projects</h2>
-            <p>Coming soon... Add your projects here.</p>
-            <!-- Placeholder for projects -->
-        </div>
+  <div class="site-shell">
+    <div class="backdrop" aria-hidden="true">
+      <div class="backdrop__glow"></div>
     </div>
-    
-    <div class="laser-background">
-        <!-- Laser effects -->
+
+    <header class="topbar">
+      <a class="topbar__brand" href="#home" data-jump="home">Fran Iriso</a>
+      <nav class="tab-nav" aria-label="Portfolio sections" id="tab-nav" role="tablist"></nav>
+    </header>
+
+    <aside class="side-nav" id="side-nav" aria-label="Section rail navigation"></aside>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile section navigation"></nav>
+
+    <div class="content-wrap">
+      <header class="hero" id="top">
+        <div class="hero__copy" id="hero-copy"></div>
+        <div class="hero__photo" id="photo-panel"></div>
+      </header>
+      <header class="section-head" id="section-head" hidden>
+        <p class="section-head__kicker" id="section-head-kicker"></p>
+        <h2 class="section-head__title" id="section-head-title"></h2>
+      </header>
+
+      <main class="tab-panels">
+        <section
+          class="tab-panel is-active"
+          id="panel-home"
+          data-panel="home"
+          role="tabpanel"
+          aria-labelledby="tab-home"
+        >
+          <div class="panel-grid panel-grid--home">
+            <div class="panel-card panel-card--wide" id="about-panel"></div>
+            <div class="panel-card panel-card--compact" id="status-panel"></div>
+            <div class="panel-card panel-card--wide" id="highlights-panel"></div>
+            <div class="panel-card panel-card--wide" id="tech-panel"></div>
+            <div class="panel-card panel-card--wide" id="languages-panel"></div>
+          </div>
+        </section>
+
+        <section
+          class="tab-panel"
+          id="panel-resume"
+          data-panel="resume"
+          role="tabpanel"
+          aria-labelledby="tab-resume"
+          hidden
+        >
+          <div class="panel-grid panel-grid--resume">
+            <div class="panel-card panel-card--wide" id="experience-panel"></div>
+            <div class="panel-card panel-card--wide" id="education-panel"></div>
+          </div>
+        </section>
+
+        <section
+          class="tab-panel"
+          id="panel-projects"
+          data-panel="projects"
+          role="tabpanel"
+          aria-labelledby="tab-projects"
+          hidden
+        >
+          <div class="panel-grid panel-grid--projects">
+            <div class="panel-card panel-card--wide" id="projects-panel"></div>
+          </div>
+        </section>
+      </main>
     </div>
-    
-    <script src="script.js"></script>
+  </div>
+
+  <script type="module" src="script.js"></script>
 </body>
 </html>
