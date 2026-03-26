@@ -5,15 +5,16 @@ export const portfolioContent = {
     eyebrow: "Embedded Systems | Robotics | Autonomous Systems",
     title: "Hi, I'm Fran. I build embedded and robotic systems for real-world problems.",
     summary:
-      "I am an engineer with a multidisciplinary path across embedded software, electronics, robotics, and biomedical systems. I have worked and studied across Spain, Sweden, Italy, France, and Hungary, and I enjoy building practical systems with international teams.",
-    statusLabel: "Current focus",
-    statusValue: "Reliable embedded and robotics systems",
-    availability: "Open to engineering roles and research collaborations.",
+      "I am completing a dual MSc in Autonomous Systems and Intelligent Robots (EIT Digital, July 2026). My background spans embedded systems, robotics, mechatronics, and biomedical engineering, with hands-on work in space and medical-device contexts.",
+    statusLabel: "What I bring",
+    statusValue: "Embedded + robotics execution from concept to integration",
+    availability: "I enjoy projects that mix firmware, electronics, sensing, and system-level problem solving.",
     location: "Europe-based | Born in Argentina | International profile",
     contact: [
       { label: "Email", value: "franiriso@gmail.com", href: "mailto:franiriso@gmail.com" },
       { label: "LinkedIn", value: "linkedin.com/in/fran-iriso", href: "https://linkedin.com/in/fran-iriso" },
-      { label: "GitHub", value: "github.com/franiriso", href: "https://github.com/franiriso" }
+      { label: "GitHub", value: "github.com/franiriso", href: "https://github.com/franiriso" },
+      { label: "Portfolio", value: "franiriso.github.io", href: "https://franiriso.github.io/" }
     ],
     photo: {
       src: "assets/portfolio_photo_cutout.png",
@@ -23,13 +24,8 @@ export const portfolioContent = {
       { label: "Focus", value: "Embedded systems, robotics, biomedical devices, and autonomous technologies" },
       { label: "Approach", value: "Bridging hardware and software through hands-on engineering and real-world systems" },
       { label: "Experience", value: "International academic and professional background across multiple European countries" },
-      { label: "Mindset", value: "Competitive athlete background - discipline, teamwork, and high-performance environments" }
+      { label: "Background", value: "U18 Spanish national water polo team" }
     ]
-    // [
-    //   { label: "Focus", value: "Embedded systems, robotics, autonomous systems, biomedical devices" },
-    //   { label: "Approach", value: "Hands-on integration + applied R&D" },
-    //   { label: "Edge", value: "Former national-level athlete → discipline & performance mindset" }
-    // ]
   },
   home: {
     highlights: [
@@ -42,7 +38,7 @@ export const portfolioContent = {
       {
         title: "Engineering profile",
         text:
-          "I am completing a dual MSc in Autonomous Systems and Intelligent Robots (EIT Digital), built on two BSc foundations: Biomedical Engineering and Industrial Electronics + Control."
+          "Dual MSc training in Mechatronics and Computer Engineering (EIT Digital), built on Biomedical Engineering and Industrial Electronics + Control foundations."
       },
       {
         title: "International execution",
@@ -60,37 +56,37 @@ export const portfolioContent = {
         title: "Embedded / Firmware",
         accent: "amber",
         description: "Low-level software and reliability on real hardware.",
-        items: ["C", "C++", "Python", "ESP32", "STM32", "RTOS", "Espressif", "Eagle", "KiCad", "SMD Soldering", "Oscilloscope", "Multimeter"]
+        items: ["C", "C++", "Python", "ESP32", "STM32", "RTOS", "Embedded Linux", "FDIR", "State Machines", "Eagle", "KiCad"]
       },
       {
         title: "Robotics / Autonomy",
         accent: "cyan",
         description: "Sensing, control, and autonomy for intelligent machines.",
-        items: ["ROS2", "Robotics", "Path Planning", "Intelligent Vehicles", "Distributed Robot Perception"]
+        items: ["ROS2", "Path Planning", "Distributed Systems", "Sensor Fusion", "Perception Systems", "Computer Vision"]
       },
       {
         title: "Programming",
         accent: "blue",
         description: "Software for prototypes, tooling, and analysis.",
-        items: ["Python", "C#", "SQL", "MATLAB"]
+        items: ["Python", "C", "C++", "C#", "MATLAB", "SQL"]
       },
       {
         title: "Simulation / Analysis",
         accent: "silver",
         description: "Modeling, vision, and data-driven engineering.",
-        items: ["Machine Learning", "Computer Vision", "AI Control", "Signal Modeling"]
+        items: ["Machine Learning", "Signal Processing", "Regression Models", "Data Analysis", "AI Control"]
       },
       {
         title: "Tools / Platforms",
         accent: "green",
         description: "Delivery tools for collaborative engineering teams.",
-        items: ["Windows", "MacOS", "Linux", "Docker", "SCADA", "Git"]
+        items: ["Linux", "Docker", "Git", "Jira", "Codex", "Claude Code"]
       },
       {
         title: "Hardware / Systems",
         accent: "red",
         description: "Prototyping and cross-domain systems integration.",
-        items: ["Prototyping", "3D CAD", "Medical Devices", "Clinical Safety", "PCB Design"]
+        items: ["PCB Design", "Soldering", "Circuit Design", "Sensors/Actuators Integration", "3D CAD", "Medical Devices", "Clinical Safety"]
       }
     ],
     languages: [
@@ -102,23 +98,24 @@ export const portfolioContent = {
       { name: "French", level: "Beginner", score: 28, context: "International study environment" }
     ],
     publication: {
-      title: "Pending IEEE EMBC 2026 publication",
+      title: "IEEE EMBC 2026 (pending)",
       citation: "Iriso, F. et al. | Universitat Politècnica de Catalunya",
       description:
-        "Pending IEEE EMBC 2026 publication. Update with final title, co-authors, and link once published."
+        "\"Estimation of Tidal Volume From Indirect Respiratory Temperature Signals Using Linear Regression\" (pending publication). Add DOI and final link once released."
     }
   },
   resume: {
     experience: [
       {
-        role: "Embedded Software Developer",
-        organization: "Capsule Corporation",
+        role: "Embedded Software Engineer Intern",
+        organization: "Capsule Corporation srl",
         location: "Milan, Italy",
         period: "Feb 2026 - Jul 2026",
-        summary: "Embedded software development for a satellite water-propulsion system with focus on fault management and real-time behavior.",
+        summary: "Embedded software for a satellite water-propulsion system, focused on real-time operation and reliability.",
         bullets: [
-          "Worked on FDIR-oriented software for mission-critical embedded operations.",
-          "Contributed within an RTOS-driven environment where reliability and operational clarity matter."
+          "Developed embedded software modules for operation-critical behavior.",
+          "Designed and implemented FDIR (Fault Detection, Isolation & Recovery) in RTOS-based modules.",
+          "Performed functional validation and debugging on avionics hardware, including edge-case testing."
         ],
         tags: ["Space systems", "FDIR", "RTOS", "Embedded software"]
       },
@@ -127,10 +124,10 @@ export const portfolioContent = {
         organization: "Creekside AB",
         location: "Stockholm, Sweden",
         period: "Jun 2023 - Sep 2024",
-        summary: "Delivered software and hardware for embedded systems in collaboration with mechanical engineers across different device contexts.",
+        summary: "Designed and developed embedded software and hardware solutions across multiple industry applications.",
         bullets: [
-          "Built across electronics and firmware, not just application-layer software.",
-          "Worked in multidisciplinary delivery flows where integration quality was central."
+          "Collaborated in cross-functional teams to deliver robust, production-ready solutions.",
+          "Contributed to projects for high-profile clients, including Epic Games."
         ],
         tags: ["Embedded systems", "Hardware-software integration", "Prototyping"]
       },
@@ -139,10 +136,11 @@ export const portfolioContent = {
         organization: "KTH Royal Institute of Technology",
         location: "Stockholm, Sweden",
         period: "Jan 2023 - Aug 2023",
-        summary: "Research support for medical-device sensing with academic and clinical collaboration.",
+        summary: "Research engineering for medical-device sensing with KTH, Digital Futures, and KI collaboration.",
         bullets: [
-          "Developed a multidimensional in-ear sensor project with Digital Futures.",
-          "Supported principal-investigator research with collaboration involving Karolinska Institutet."
+          "Developed a multi-dimensional in-ear sensing system.",
+          "Designed and implemented physiological signal acquisition and processing methods.",
+          "Contributed to experimental validation and analysis of sensor performance in real-world conditions."
         ],
         tags: ["Medical devices", "Sensors", "Research", "Cross-institution collaboration"]
       },
@@ -151,10 +149,10 @@ export const portfolioContent = {
         organization: "Area d'Estudi",
         location: "Barcelona, Spain",
         period: "Jul 2019 - Aug 2022",
-        summary: "Taught students aged 15 to 23 through long-term curricular support and performance-focused coaching.",
+        summary: "Taught mathematics (calculus, geometry, algebra) to students aged 15 to 23.",
         bullets: [
-          "Strengthened technical communication and explanation under varied learning styles.",
-          "Helped students reach target grades through structure, clarity, and consistency."
+          "Designed lesson plans and personalized support paths.",
+          "Helped students improve performance through consistent coaching."
         ],
         tags: ["Communication", "Teaching", "Mentoring"]
       }
@@ -188,7 +186,7 @@ export const portfolioContent = {
         degree: "BSc in Biomedical Engineering",
         institution: "Universitat Politecnica de Catalunya",
         location: "Barcelona, Spain",
-        period: "Sep 2022 - Jun 2025",
+        period: "Sep 2021 - Jun 2025",
         summary: "Built foundations in medical technology, systems modeling, and physiological signals.",
         details: ["GPA: 7.62 / 10", "Thesis: Multivariable model to estimate tidal volume from indirect respiratory signals"]
       },
@@ -199,6 +197,14 @@ export const portfolioContent = {
         period: "Sep 2018 - Jan 2024",
         summary: "Strong controls, electronics, and practical device-engineering foundation.",
         details: ["GPA: 7.78 / 10", "Thesis: PCB design for remote monitoring of a motor-controlled polarizing filter"]
+      },
+      {
+        degree: "Exchange Studies",
+        institution: "KTH Royal Institute of Technology",
+        location: "Stockholm, Sweden",
+        period: "Jun 2022 - Jan 2023",
+        summary: "Academic exchange period with international technical collaboration.",
+        details: ["Exchange studies completed during BSc program."]
       }
     ]
   },
@@ -220,7 +226,7 @@ export const portfolioContent = {
         {
           degree: "BSc Biomedical Engineering",
           institution: "Universitat Politecnica de Catalunya",
-          period: "2022 - 2025"
+          period: "2021 - 2025"
         },
         {
           degree: "BSc Industrial, Electronics Automatic and Control Engineering",
@@ -235,7 +241,7 @@ export const portfolioContent = {
       {
         title: "Satellite Water Propulsion FDIR",
         blurb:
-          "Embedded software work on fault detection, isolation, and recovery for a water-propulsion satellite subsystem.",
+          "Embedded software and FDIR strategy for a water-propulsion satellite subsystem, with validation on avionics hardware.",
         tags: ["Embedded software", "RTOS", "FDIR", "Space systems"],
         featured: true,
         mediaLabel: "Add subsystem diagram or bench photo",
@@ -248,9 +254,13 @@ export const portfolioContent = {
       {
         title: "In-Ear Sensor Research Platform",
         blurb:
-          "Medical sensing research at KTH with Digital Futures and Karolinska collaboration.",
+          "Medical sensing research at KTH with Digital Futures and Karolinska collaboration, including physiological signal processing.",
         tags: ["Sensors", "Medical devices", "Research engineering", "Signal acquisition"],
         featured: false,
+        image: {
+          src: "assets/Screenshot 2026-03-26 at 00.55.38.png",
+          alt: "In-ear sensor project screenshot"
+        },
         mediaLabel: "Add prototype photo or sensing diagram",
         links: [
           { label: "GitHub", href: "" },
@@ -264,6 +274,10 @@ export const portfolioContent = {
           "BSc thesis on estimating tidal volume from indirect respiratory signals using a multivariable model.",
         tags: ["Biomedical engineering", "Modeling", "Signals", "Analysis"],
         featured: false,
+        image: {
+          src: "assets/Screenshot 2026-03-26 at 00.47.38.png",
+          alt: "Respiratory signal modeling screenshot"
+        },
         mediaLabel: "Add plot, chart, or thesis cover",
         links: [
           { label: "GitHub", href: "" },
@@ -277,6 +291,10 @@ export const portfolioContent = {
           "Electronics and control thesis focused on PCB design for remote monitoring of a motor-controlled polarizing filter.",
         tags: ["PCB design", "Controls", "Embedded hardware", "Instrumentation"],
         featured: false,
+        image: {
+          src: "assets/Screenshot 2026-03-26 at 00.54.41.png",
+          alt: "PCB project screenshot"
+        },
         mediaLabel: "Add PCB render or lab photo",
         links: [
           { label: "GitHub", href: "" },

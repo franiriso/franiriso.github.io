@@ -409,7 +409,7 @@ body.is-booted .panel-card {
 .contact-grid {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 8px;
 }
 
@@ -579,8 +579,7 @@ body.is-booted .panel-card {
 #languages-panel,
 #projects-panel,
 #experience-panel,
-#education-panel,
-#highlights-panel {
+#education-panel {
   grid-column: 1 / -1;
 }
 
@@ -1026,6 +1025,36 @@ body.is-booted .panel-card {
 .project-card__media p {
   position: relative;
   z-index: 1;
+  margin: 0;
+}
+
+.project-card__media--image {
+  padding: 0;
+  overflow: hidden;
+}
+
+.project-card__media--image::before {
+  inset: 10px;
+  border-style: solid;
+  border-color: rgba(164, 230, 255, 0.18);
+}
+
+.project-card__media--image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.project-card__media--image p {
+  width: 100%;
+  padding: 12px 12px 10px;
+  background: linear-gradient(180deg, transparent 0%, rgba(11, 14, 20, 0.88) 58%, rgba(11, 14, 20, 0.95) 100%);
+  color: #d8e5ed;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
 }
 
 .project-card__content {

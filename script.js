@@ -60,13 +60,23 @@ const app = {
 
 let currentTabId = "home";
 
+function getCanonicalPathname(pathname) {
+  // Keep repo subpath support (e.g. /repo/home -> /repo/).
+  return pathname.replace(/\/home\/?$/, "/");
+}
+
+function updateAddressForTab(tabId) {
+  const path = getCanonicalPathname(window.location.pathname);
+  const hash = tabId === "home" ? "" : `#${tabId}`;
+  history.replaceState(null, "", `${path}${window.location.search}${hash}`);
+}
+
 function createMarkup() {
   renderHero();
   setupProfileImage();
   renderNavigation();
   renderAbout();
   renderStatus();
-  renderHighlights();
   renderTech();
   renderLanguages();
   renderTimeline("experience-panel", "Experience", portfolioContent.resume.experience, experienceCard);
@@ -294,7 +304,7 @@ function renderNavigation() {
 }
 
 function renderAbout() {
-  const { aboutBlocks, currentlyExploring } = portfolioContent.home;
+  const { aboutBlocks, currentlyExploring, highlights } = portfolioContent.home;
   document.querySelector("#about-panel").innerHTML = `
     <div class="card-header">
       <p class="section-kicker">Identity</p>
@@ -316,6 +326,21 @@ function renderAbout() {
       <p class="section-kicker">Currently building / exploring</p>
       <div class="explore-tags">
         ${currentlyExploring.map((item) => `<span>${item}</span>`).join("")}
+      </div>
+    </div>
+    <div class="explore-strip">
+      <p class="section-kicker">Engineering DNA</p>
+      <div class="highlight-strip">
+        ${highlights
+          .map(
+            (item) => `
+              <div class="highlight-card">
+                <span>${item.label}</span>
+                <strong>${item.value}</strong>
+              </div>
+            `
+          )
+          .join("")}
       </div>
     </div>
   `;
@@ -353,27 +378,6 @@ function renderStatus() {
               <div class="status-bars__track">
                 <div class="status-bars__fill" style="width: ${bar.value}%"></div>
               </div>
-            </div>
-          `
-        )
-        .join("")}
-    </div>
-  `;
-}
-
-function renderHighlights() {
-  document.querySelector("#highlights-panel").innerHTML = `
-    <div class="card-header">
-      <p class="section-kicker">Engineering DNA</p>
-      <h3>At a glance</h3>
-    </div>
-    <div class="highlight-strip">
-      ${portfolioContent.home.highlights
-        .map(
-          (item) => `
-            <div class="highlight-card">
-              <span>${item.label}</span>
-              <strong>${item.value}</strong>
             </div>
           `
         )
@@ -544,10 +548,17 @@ function educationCard(item) {
 }
 
 function projectCard(item) {
+  const hasImage = Boolean(item.image?.src);
+  const imageSrc = hasImage ? encodeURI(item.image.src) : "";
   return `
     <article class="project-card${item.featured ? " project-card--featured" : ""}">
-      <div class="project-card__media">
+      <div class="project-card__media${hasImage ? " project-card__media--image" : ""}">
         ${item.featured ? '<span class="project-badge">Featured</span>' : ""}
+        ${
+          hasImage
+            ? `<img src="${imageSrc}" alt="${item.image.alt || item.title}" loading="lazy">`
+            : ""
+        }
         <p>${item.mediaLabel}</p>
       </div>
       <div class="project-card__content">
@@ -595,11 +606,16 @@ function activateTab(tabId, updateHash = true) {
 
   updateViewMode(tabId);
   if (updateHash) {
-    history.replaceState(null, "", `#${tabId}`);
+    updateAddressForTab(tabId);
   }
 }
 
 function bindNavigation() {
+  const canonicalPath = getCanonicalPathname(window.location.pathname);
+  if (canonicalPath !== window.location.pathname) {
+    history.replaceState(null, "", `${canonicalPath}${window.location.search}${window.location.hash}`);
+  }
+
   document.addEventListener("click", (event) => {
     const tabTrigger = event.target.closest("[data-tab]");
     if (tabTrigger) {
@@ -617,7 +633,8 @@ function bindNavigation() {
 
   const hashTab = window.location.hash.replace("#", "");
   if (hashTab) {
-    activateTab(hashTab, false);
+    // Normalize #home to the clean root URL.
+    activateTab(hashTab, hashTab === "home");
   } else {
     updateViewMode(currentTabId);
   }
@@ -625,7 +642,7 @@ function bindNavigation() {
   window.addEventListener("hashchange", () => {
     const nextTab = window.location.hash.replace("#", "");
     if (nextTab) {
-      activateTab(nextTab, false);
+      activateTab(nextTab, nextTab === "home");
     }
   });
 }
