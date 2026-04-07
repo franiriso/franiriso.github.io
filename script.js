@@ -556,27 +556,15 @@ function projectCard(item) {
         ${item.featured ? '<span class="project-badge">Featured</span>' : ""}
         ${
           hasImage
-            ? `<img src="${imageSrc}" alt="${item.image.alt || item.title}" loading="lazy">`
+            ? `<img src="${imageSrc}" alt="${item.image.alt || item.title}" loading="lazy"${item.image.position ? ` style="object-position:${item.image.position};"` : ""}>`
             : ""
         }
-        <p>${item.mediaLabel}</p>
       </div>
       <div class="project-card__content">
         <h4>${item.title}</h4>
         <p>${item.blurb}</p>
-        <div class="tag-row">
+        <div class="tag-row tag-row--project">
           ${item.tags.map((tag) => `<span>${tag}</span>`).join("")}
-        </div>
-        <div class="project-links">
-          ${item.links
-            .map(
-              (link) => `
-                <a class="project-link${link.href ? "" : " is-placeholder"}" href="${link.href || "#"}"${link.href ? ' target="_blank" rel="noreferrer"' : ' aria-disabled="true" tabindex="-1"'}>
-                  ${link.label}
-                </a>
-              `
-            )
-            .join("")}
         </div>
       </div>
     </article>
@@ -740,8 +728,25 @@ function bindReveal() {
   document.querySelectorAll(".panel-card, .project-card, .timeline-card").forEach((node) => observer.observe(node));
 }
 
+function bindProjectImageOrientation() {
+  const projectImages = Array.from(document.querySelectorAll(".project-card__media--image img"));
+  const singleColumnQuery = window.matchMedia("(max-width: 760px)");
+
+  const applyOrientation = () => {
+    const shouldRotate = singleColumnQuery.matches;
+    projectImages.forEach((image) => {
+      image.classList.toggle("is-rotated", shouldRotate);
+    });
+  };
+
+  applyOrientation();
+  singleColumnQuery.addEventListener("change", applyOrientation);
+  window.addEventListener("resize", applyOrientation);
+}
+
 createMarkup();
 bindNavigation();
 bindAmbientMotion();
+bindProjectImageOrientation();
 bindReveal();
 requestAnimationFrame(() => document.body.classList.add("is-booted"));

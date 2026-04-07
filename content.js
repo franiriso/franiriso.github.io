@@ -258,8 +258,9 @@ export const portfolioContent = {
         tags: ["Sensors", "Medical devices", "Research engineering", "Signal acquisition"],
         featured: false,
         image: {
-          src: "assets/Screenshot 2026-03-26 at 00.55.38.png",
-          alt: "In-ear sensor project screenshot"
+          src: "assets/Screenshot 2026-03-26 at 01.57.46.png",
+          alt: "In-ear sensor project screenshot",
+          position: "50% 38%"
         },
         mediaLabel: "Add prototype photo or sensing diagram",
         links: [
@@ -292,8 +293,8 @@ export const portfolioContent = {
         tags: ["PCB design", "Controls", "Embedded hardware", "Instrumentation"],
         featured: false,
         image: {
-          src: "assets/Screenshot 2026-03-26 at 00.54.41.png",
-          alt: "PCB project screenshot"
+          src: "assets/pcb_project_cutout_rotated.png",
+          alt: "Rotated PCB project cutout"
         },
         mediaLabel: "Add PCB render or lab photo",
         links: [
