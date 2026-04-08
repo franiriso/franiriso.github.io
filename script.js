@@ -377,6 +377,21 @@ function publicationMarkup() {
     <article class="publication-card">
       <p class="publication-card__citation">${publication.citation}</p>
       <p>${publication.description}</p>
+      ${
+        publication.links?.length
+          ? `
+            <div class="publication-links">
+              ${publication.links
+                .map(
+                  (link) => `
+                    <a class="publication-link" href="${link.href}" target="_blank" rel="noreferrer">${link.label}</a>
+                  `
+                )
+                .join("")}
+            </div>
+          `
+          : ""
+      }
     </article>
   `;
 }

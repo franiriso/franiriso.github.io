@@ -101,7 +101,13 @@ export const portfolioContent = {
       title: "IEEE EMBC 2026 (pending)",
       citation: "Iriso, F. et al. | Universitat Politècnica de Catalunya",
       description:
-        "\"Estimation of Tidal Volume From Indirect Respiratory Temperature Signals Using Linear Regression\" (pending publication)."
+        "\"Estimation of Tidal Volume From Indirect Respiratory Temperature Signals Using Linear Regression\" (pending publication).",
+      links: [
+        {
+          label: "Museum AI Article",
+          href: "https://www.snewsonline.com/conversational-ai-sicurezza-museale-supporto-informativo-decisione-responsabile/"
+        }
+      ]
     }
   },
   resume: {
