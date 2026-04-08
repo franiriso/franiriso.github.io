@@ -295,7 +295,7 @@ export const portfolioContent = {
         image: {
           src: "assets/pcb_project_cutout_rotated.png",
           alt: "Rotated PCB project cutout",
-          tilt: "-130deg"
+          tilt: "-50deg"
         },
         // mediaLabel: "Add PCB render or lab photo",
         links: [
