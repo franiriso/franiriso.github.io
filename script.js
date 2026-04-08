@@ -30,13 +30,6 @@ const tabs = [
   }
 ];
 
-const statusBars = [
-  { label: "Embedded integration", value: 89 },
-  { label: "Robotics autonomy", value: 92 },
-  { label: "Electronics prototyping", value: 81 },
-  { label: "Medical signal analysis", value: 78 }
-];
-
 const techIcons = {
   amber: "precision_manufacturing",
   cyan: "robot_2",
@@ -76,7 +69,6 @@ function createMarkup() {
   setupProfileImage();
   renderNavigation();
   renderAbout();
-  renderStatus();
   renderTech();
   renderLanguages();
   renderTimeline("experience-panel", "Experience", portfolioContent.resume.experience, experienceCard);
@@ -86,7 +78,6 @@ function createMarkup() {
 
 function renderHero() {
   const hero = portfolioContent.hero;
-  const contactHref = hero.contact.find((entry) => entry.href.startsWith("mailto:"))?.href || "#";
 
   document.querySelector("#hero-copy").innerHTML = `
     <p class="eyebrow">${hero.eyebrow}</p>
@@ -94,7 +85,7 @@ function renderHero() {
     <h2>${hero.title}</h2>
     <p class="hero__summary">${hero.summary}</p>
     <div class="hero__actions">
-      <a class="hero-action hero-action--primary" href="${contactHref}">Contact</a>
+      <button class="hero-action hero-action--primary" type="button" data-jump="projects">View projects</button>
       <button class="hero-action hero-action--secondary" type="button" data-jump="resume">Open resume</button>
     </div>
     <div class="contact-grid">
@@ -305,10 +296,16 @@ function renderNavigation() {
 
 function renderAbout() {
   const { aboutBlocks, currentlyExploring, highlights } = portfolioContent.home;
+  const { statusLabel, statusValue, availability } = portfolioContent.hero;
   document.querySelector("#about-panel").innerHTML = `
     <div class="card-header">
       <p class="section-kicker">Identity</p>
       <h3>Engineering across hardware and software.</h3>
+    </div>
+    <div class="about-bring">
+      <p class="section-kicker">${statusLabel}</p>
+      <h4>${statusValue}</h4>
+      <p>${availability}</p>
     </div>
     <div class="about-grid">
       ${aboutBlocks
@@ -342,46 +339,6 @@ function renderAbout() {
           )
           .join("")}
       </div>
-    </div>
-  `;
-}
-
-function renderStatus() {
-  const hero = portfolioContent.hero;
-  document.querySelector("#status-panel").innerHTML = `
-    <div class="card-header">
-      <p class="section-kicker">Telemetry</p>
-      <h3>Quick profile</h3>
-    </div>
-    <p class="status-summary">${hero.availability}</p>
-    <div class="telemetry-list">
-      ${hero.telemetry
-        .map(
-          (item) => `
-            <div class="telemetry-row">
-              <span>${item.label}</span>
-              <strong>${item.value}</strong>
-            </div>
-          `
-        )
-        .join("")}
-    </div>
-    <div class="status-bars">
-      ${statusBars
-        .map(
-          (bar) => `
-            <div class="status-bars__row">
-              <div class="status-bars__meta">
-                <span>${bar.label}</span>
-                <strong>${bar.value}%</strong>
-              </div>
-              <div class="status-bars__track">
-                <div class="status-bars__fill" style="width: ${bar.value}%"></div>
-              </div>
-            </div>
-          `
-        )
-        .join("")}
     </div>
   `;
 }
@@ -550,13 +507,21 @@ function educationCard(item) {
 function projectCard(item) {
   const hasImage = Boolean(item.image?.src);
   const imageSrc = hasImage ? encodeURI(item.image.src) : "";
+  const imageStyle = hasImage
+    ? [
+        item.image.position ? `object-position:${item.image.position};` : "",
+        item.image.tilt ? `--img-tilt:${item.image.tilt};` : ""
+      ]
+        .filter(Boolean)
+        .join(" ")
+    : "";
   return `
     <article class="project-card${item.featured ? " project-card--featured" : ""}">
       <div class="project-card__media${hasImage ? " project-card__media--image" : ""}">
-        ${item.featured ? '<span class="project-badge">Featured</span>' : ""}
+        ${item.featured ? '<span class="project-badge">Coming soon</span>' : ""}
         ${
           hasImage
-            ? `<img src="${imageSrc}" alt="${item.image.alt || item.title}" loading="lazy"${item.image.position ? ` style="object-position:${item.image.position};"` : ""}>`
+            ? `<img src="${imageSrc}" alt="${item.image.alt || item.title}" loading="lazy"${imageStyle ? ` style="${imageStyle}"` : ""}>`
             : ""
         }
       </div>

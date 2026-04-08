@@ -6,8 +6,8 @@ export const portfolioContent = {
     title: "Hi, I'm Fran. I build embedded and robotic systems for real-world problems.",
     summary:
       "I am completing a dual MSc in Autonomous Systems and Intelligent Robots (EIT Digital, July 2026). My background spans embedded systems, robotics, mechatronics, and biomedical engineering, with hands-on work in space and medical-device contexts.",
-    statusLabel: "What I bring",
-    statusValue: "Embedded + robotics execution from concept to integration",
+    statusLabel: "About me",
+    statusValue: "Fun, hard-working, and hands-on engineer",
     availability: "I enjoy projects that mix firmware, electronics, sensing, and system-level problem solving.",
     location: "Europe-based | Born in Argentina | International profile",
     contact: [
@@ -101,7 +101,7 @@ export const portfolioContent = {
       title: "IEEE EMBC 2026 (pending)",
       citation: "Iriso, F. et al. | Universitat Politècnica de Catalunya",
       description:
-        "\"Estimation of Tidal Volume From Indirect Respiratory Temperature Signals Using Linear Regression\" (pending publication). Add DOI and final link once released."
+        "\"Estimation of Tidal Volume From Indirect Respiratory Temperature Signals Using Linear Regression\" (pending publication)."
     }
   },
   resume: {
@@ -258,7 +258,7 @@ export const portfolioContent = {
         tags: ["Sensors", "Medical devices", "Research engineering", "Signal acquisition"],
         featured: false,
         image: {
-          src: "assets/Screenshot 2026-03-26 at 01.57.46.png",
+          src: "assets/Screenshot 2026-04-08 at 01.50.58.png",
           alt: "In-ear sensor project screenshot",
           position: "50% 38%"
         },
@@ -294,7 +294,8 @@ export const portfolioContent = {
         featured: false,
         image: {
           src: "assets/pcb_project_cutout_rotated.png",
-          alt: "Rotated PCB project cutout"
+          alt: "Rotated PCB project cutout",
+          tilt: "-30deg"
         },
         mediaLabel: "Add PCB render or lab photo",
         links: [
