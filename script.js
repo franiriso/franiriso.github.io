@@ -378,13 +378,17 @@ function publicationMarkup() {
       <p class="publication-card__citation">${publication.citation}</p>
       <p>${publication.description}</p>
       ${
-        publication.links?.length
+        publication.minorPublications?.length
           ? `
-            <div class="publication-links">
-              ${publication.links
+            <div class="minor-publications">
+              <p class="minor-publications__title">Minor publications</p>
+              ${publication.minorPublications
                 .map(
-                  (link) => `
-                    <a class="publication-link" href="${link.href}" target="_blank" rel="noreferrer">${link.label}</a>
+                  (item) => `
+                    <p class="minor-publication-item">
+                      <strong>${item.title}</strong>
+                      <span>${item.journal}</span>
+                    </p>
                   `
                 )
                 .join("")}

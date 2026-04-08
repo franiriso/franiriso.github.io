@@ -885,25 +885,35 @@ body.is-booted .panel-card {
   font-size: 0.72rem;
 }
 
-.publication-links {
+.minor-publications {
   margin-top: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  border-top: 1px solid rgba(164, 230, 255, 0.14);
+  padding-top: 10px;
 }
 
-.publication-link {
-  border: 1px solid rgba(164, 230, 255, 0.2);
-  background: rgba(39, 45, 55, 0.6);
-  border-radius: 999px;
-  padding: 7px 11px;
-  font-size: 0.73rem;
-  transition: border-color 180ms ease, background 180ms ease;
+.minor-publications__title {
+  margin: 0 0 8px;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--primary);
 }
 
-.publication-link:hover {
-  border-color: rgba(164, 230, 255, 0.42);
-  background: rgba(39, 45, 55, 0.82);
+.minor-publication-item {
+  margin: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.minor-publication-item strong {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #d9e5ec;
+}
+
+.minor-publication-item span {
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 
 .timeline {

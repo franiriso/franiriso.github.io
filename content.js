@@ -102,10 +102,10 @@ export const portfolioContent = {
       citation: "Iriso, F. et al. | Universitat Politècnica de Catalunya",
       description:
         "\"Estimation of Tidal Volume From Indirect Respiratory Temperature Signals Using Linear Regression\" (pending publication).",
-      links: [
+      minorPublications: [
         {
-          label: "Museum AI Article",
-          href: "https://www.snewsonline.com/conversational-ai-sicurezza-museale-supporto-informativo-decisione-responsabile/"
+          title: "Conversational AI e sicurezza museale: dal supporto informativo alla decisione responsabile",
+          journal: "S News Online"
         }
       ]
     }
