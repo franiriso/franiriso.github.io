@@ -1373,6 +1373,28 @@ body {
     inset: 50px 18px 18px 18px;
   }
 
+  .project-card__media--image {
+    background: rgba(11, 14, 20, 0.92);
+  }
+
+  .project-card__media--image img {
+    inset: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    object-fit: contain;
+    transform: none;
+  }
+
+  .project-card__media--image img.is-rotated {
+    inset: auto;
+    left: 50%;
+    top: 50%;
+    width: auto;
+    height: calc(100% - 20px);
+    max-width: none;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
   .timeline-card__meta {
     flex-direction: column;
   }

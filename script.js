@@ -698,11 +698,18 @@ function bindProjectImageOrientation() {
   const singleColumnQuery = window.matchMedia("(max-width: 760px)");
 
   const applyOrientation = () => {
-    const shouldRotate = singleColumnQuery.matches;
     projectImages.forEach((image) => {
+      const isLandscape = image.naturalWidth > image.naturalHeight;
+      const shouldRotate = singleColumnQuery.matches && isLandscape;
       image.classList.toggle("is-rotated", shouldRotate);
     });
   };
+
+  projectImages.forEach((image) => {
+    if (!image.complete) {
+      image.addEventListener("load", applyOrientation, { once: true });
+    }
+  });
 
   applyOrientation();
   singleColumnQuery.addEventListener("change", applyOrientation);
