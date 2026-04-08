@@ -235,8 +235,8 @@ export const portfolioContent = {
         }
       ]
     },
-    intro:
-      "Project cards are editable placeholders based on real work. Add media, links, and results when ready.",
+    // intro:
+    //   "Project cards are editable placeholders based on real work. Add media, links, and results when ready.",
     cards: [
       {
         title: "Satellite Water Propulsion FDIR",
