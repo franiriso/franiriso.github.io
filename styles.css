@@ -575,6 +575,7 @@ body.is-booted .panel-card {
   grid-column: span 4;
 }
 
+#about-panel,
 #tech-panel,
 #languages-panel,
 #projects-panel,
