@@ -235,8 +235,8 @@ export const portfolioContent = {
         }
       ]
     },
-    // intro:
-    //   "Project cards are editable placeholders based on real work. Add media, links, and results when ready.",
+    intro:
+      "Biggest projects worked on:",
     cards: [
       {
         title: "Satellite Water Propulsion FDIR",
@@ -244,7 +244,7 @@ export const portfolioContent = {
           "Embedded software and FDIR strategy for a water-propulsion satellite subsystem, with validation on avionics hardware.",
         tags: ["Embedded software", "RTOS", "FDIR", "Space systems"],
         featured: true,
-        mediaLabel: "Add subsystem diagram or bench photo",
+        // mediaLabel: "Add subsystem diagram or bench photo",
         links: [
           { label: "GitHub", href: "" },
           { label: "Demo", href: "" },
@@ -262,7 +262,7 @@ export const portfolioContent = {
           alt: "In-ear sensor project screenshot",
           position: "50% 38%"
         },
-        mediaLabel: "Add prototype photo or sensing diagram",
+        // mediaLabel: "Add prototype photo or sensing diagram",
         links: [
           { label: "GitHub", href: "" },
           { label: "Demo", href: "" },
@@ -279,7 +279,7 @@ export const portfolioContent = {
           src: "assets/Screenshot 2026-03-26 at 00.47.38.png",
           alt: "Respiratory signal modeling screenshot"
         },
-        mediaLabel: "Add plot, chart, or thesis cover",
+        // mediaLabel: "Add plot, chart, or thesis cover",
         links: [
           { label: "GitHub", href: "" },
           { label: "Demo", href: "" },
