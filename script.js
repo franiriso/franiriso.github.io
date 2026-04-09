@@ -369,34 +369,32 @@ function renderLanguages() {
 
 function publicationMarkup() {
   const publication = portfolioContent.home.publication;
+  const citationInline = publication.citation.replace(/\s*\|\s*/g, " - ");
   return `
-    <div class="card-header">
-      <p class="section-kicker">Publication</p>
-      <h3>${publication.title}</h3>
-    </div>
-    <article class="publication-card">
-      <p class="publication-card__citation">${publication.citation}</p>
-      <p>${publication.description}</p>
+    <div class="publication-subcards">
+      <article class="publication-card publication-subcard publication-subcard--primary">
+        <p>${publication.description} ${citationInline}</p>
+      </article>
       ${
         publication.minorPublications?.length
           ? `
-            <div class="minor-publications">
-              <p class="minor-publications__title">Minor publications</p>
-              ${publication.minorPublications
-                .map(
-                  (item) => `
+            <h4 class="publication-section-subtitle">Also mentioned in</h4>
+            ${publication.minorPublications
+              .map(
+                (item) => `
+                  <article class="publication-card publication-subcard">
                     <p class="minor-publication-item">
-                      <strong>${item.title}</strong>
-                      <span>${item.journal}</span>
+                      <strong>${item.journal}:</strong>
+                      <span>${item.title}</span>
                     </p>
-                  `
-                )
-                .join("")}
-            </div>
+                  </article>
+                `
+              )
+              .join("")}
           `
           : ""
       }
-    </article>
+    </div>
   `;
 }
 
@@ -413,8 +411,14 @@ function renderTimeline(targetId, heading, items, renderer) {
 }
 
 function renderProjects() {
+  renderProjectTechSpecs();
+  renderProjectPublication();
+  renderProjectCards();
+}
+
+function renderProjectTechSpecs() {
   const degreeSpecs = portfolioContent.projects.degreeSpecs;
-  document.querySelector("#projects-panel").innerHTML = `
+  document.querySelector("#project-techspecs-panel").innerHTML = `
     <div class="card-header">
       <p class="section-kicker">Tech specs</p>
       <h3>${degreeSpecs.title}</h3>
@@ -433,7 +437,21 @@ function renderProjects() {
         )
         .join("")}
     </div>
+  `;
+}
+
+function renderProjectPublication() {
+  document.querySelector("#project-publication-panel").innerHTML = `
+    <div class="card-header">
+      <p class="section-kicker">Publications</p>
+      <h3>${portfolioContent.home.publication.title}</h3>
+    </div>
     ${publicationMarkup()}
+  `;
+}
+
+function renderProjectCards() {
+  document.querySelector("#projects-panel").innerHTML = `
     <div class="card-header">
       <p class="section-kicker">Projects</p>
       <h3>Projects and thesis placeholders</h3>
