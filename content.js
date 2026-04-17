@@ -98,10 +98,10 @@ export const portfolioContent = {
       { name: "French", level: "Beginner", score: 28, context: "International study environment" }
     ],
     publication: {
-      title: "IEEE EMBC 2026 (pending)",
+      title: "IEEE EMBC 2026 (accepted)",
       citation: "Iriso, F. et al. | Universitat Politècnica de Catalunya",
       description:
-        "\"Estimation of Tidal Volume From Indirect Respiratory Temperature Signals Using Linear Regression\" (pending publication).",
+        "\"Estimation of Tidal Volume From Indirect Respiratory Temperature Signals Using Linear Regression.\" Full Paper ID: 2443. Accepted for presentation at the 48th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (July 26-30, 2026, Toronto, Canada).",
       minorPublications: [
         {
           title: "Conversational AI e sicurezza museale: dal supporto informativo alla decisione responsabile",
