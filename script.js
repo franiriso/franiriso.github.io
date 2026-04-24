@@ -48,10 +48,18 @@ const app = {
   sectionHead: document.querySelector("#section-head"),
   sectionHeadKicker: document.querySelector("#section-head-kicker"),
   sectionHeadTitle: document.querySelector("#section-head-title"),
-  panels: Array.from(document.querySelectorAll(".tab-panel"))
+  panels: Array.from(document.querySelectorAll(".tab-panel")),
+  projectDialog: document.querySelector("#project-dialog"),
+  projectDialogCard: document.querySelector("#project-dialog-card"),
+  projectDialogClose: document.querySelector("#project-dialog-close"),
+  projectDialogMedia: document.querySelector("#project-dialog-media"),
+  projectDialogTitle: document.querySelector("#project-dialog-title"),
+  projectDialogDescription: document.querySelector("#project-dialog-description"),
+  projectDialogTags: document.querySelector("#project-dialog-tags")
 };
 
 let currentTabId = "home";
+let activeProjectCard = null;
 
 function getCanonicalPathname(pathname) {
   // Keep repo subpath support (e.g. /repo/home -> /repo/).
@@ -369,11 +377,12 @@ function renderLanguages() {
 
 function publicationMarkup() {
   const publication = portfolioContent.home.publication;
-  const citationInline = publication.citation.replace(/\s*\|\s*/g, " - ");
   return `
     <div class="publication-subcards">
       <article class="publication-card publication-subcard publication-subcard--primary">
-        <p>${publication.description} ${citationInline}</p>
+        <h4 class="publication-heading">${publication.title}</h4>
+        <p class="publication-card__citation">${publication.citation}</p>
+        <p>${publication.description}</p>
       </article>
       ${
         publication.minorPublications?.length
@@ -382,7 +391,7 @@ function publicationMarkup() {
             ${publication.minorPublications
               .map(
                 (item) => `
-                  <article class="publication-card publication-subcard">
+                  <article class="publication-card publication-subcard publication-subcard--secondary">
                     <p class="minor-publication-item">
                       <strong>${item.journal}:</strong>
                       <span>${item.title}</span>
@@ -444,7 +453,7 @@ function renderProjectPublication() {
   document.querySelector("#project-publication-panel").innerHTML = `
     <div class="card-header">
       <p class="section-kicker">Publications</p>
-      <h3>${portfolioContent.home.publication.title}</h3>
+      <h3>Publications</h3>
     </div>
     ${publicationMarkup()}
   `;
@@ -458,7 +467,7 @@ function renderProjectCards() {
     </div>
     <p class="projects-intro">${portfolioContent.projects.intro}</p>
     <div class="projects-grid">
-      ${portfolioContent.projects.cards.map(projectCard).join("")}
+      ${portfolioContent.projects.cards.map((item, index) => projectCard(item, index)).join("")}
     </div>
   `;
 }
@@ -541,7 +550,7 @@ function educationCard(item) {
   `;
 }
 
-function projectCard(item) {
+function projectCard(item, index) {
   const hasImage = Boolean(item.image?.src);
   const imageSrc = hasImage ? encodeURI(item.image.src) : "";
   const imageStyle = hasImage
@@ -553,7 +562,7 @@ function projectCard(item) {
         .join(" ")
     : "";
   return `
-    <article class="project-card${item.featured ? " project-card--featured" : ""}">
+    <article class="project-card${item.featured ? " project-card--featured" : ""}" data-project-index="${index}" role="button" tabindex="0" aria-label="Open details for ${item.title}">
       <div class="project-card__media${hasImage ? " project-card__media--image" : ""}">
         ${item.featured ? '<span class="project-badge">Coming soon</span>' : ""}
         ${
@@ -573,9 +582,79 @@ function projectCard(item) {
   `;
 }
 
+function openProjectDialog(projectIndex, cardElement = null) {
+  const project = portfolioContent.projects.cards[projectIndex];
+  if (!project || !app.projectDialog || !app.projectDialogCard) {
+    return;
+  }
+
+  activeProjectCard = cardElement || null;
+
+  if (app.projectDialogTitle) app.projectDialogTitle.textContent = project.title;
+  if (app.projectDialogDescription) app.projectDialogDescription.textContent = project.blurb;
+  if (app.projectDialogTags) {
+    app.projectDialogTags.innerHTML = project.tags.map((tag) => `<span>${tag}</span>`).join("");
+  }
+  if (app.projectDialogMedia) {
+    app.projectDialogMedia.innerHTML = project.image?.src
+      ? `<img src="${encodeURI(project.image.src)}" alt="${project.image.alt || project.title}" loading="lazy">`
+      : `<p>${project.mediaLabel || "Project preview"}</p>`;
+  }
+
+  app.projectDialog.showModal();
+  animateProjectDialog(true);
+}
+
+function closeProjectDialog() {
+  if (!app.projectDialog?.open) {
+    return;
+  }
+  animateProjectDialog(false, () => {
+    app.projectDialog.close();
+    activeProjectCard?.focus();
+    activeProjectCard = null;
+  });
+}
+
+function animateProjectDialog(opening, onDone) {
+  const card = app.projectDialogCard;
+  if (!card) {
+    if (onDone) onDone();
+    return;
+  }
+
+  const anime = window.anime;
+  if (!anime) {
+    if (opening) {
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0) scale(1)";
+    } else {
+      card.style.opacity = "0";
+      card.style.transform = "translateY(12px) scale(0.98)";
+    }
+    if (onDone) onDone();
+    return;
+  }
+
+  anime.remove(card);
+  anime({
+    targets: card,
+    opacity: opening ? [0, 1] : [1, 0],
+    translateY: opening ? [12, 0] : [0, 12],
+    scale: opening ? [0.98, 1] : [1, 0.98],
+    duration: opening ? 280 : 180,
+    easing: opening ? "easeOutCubic" : "easeInCubic",
+    complete: onDone
+  });
+}
+
 function activateTab(tabId, updateHash = true) {
   if (!tabs.some((tab) => tab.id === tabId)) {
     return;
+  }
+
+  if (app.projectDialog?.open) {
+    app.projectDialog.close();
   }
 
   currentTabId = tabId;
@@ -618,6 +697,22 @@ function bindNavigation() {
     if (jumpTrigger) {
       event.preventDefault();
       activateTab(jumpTrigger.dataset.jump);
+    }
+
+    const projectTrigger = event.target.closest(".project-card[data-project-index]");
+    if (projectTrigger) {
+      event.preventDefault();
+      openProjectDialog(Number(projectTrigger.dataset.projectIndex), projectTrigger);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      const projectTrigger = event.target.closest(".project-card[data-project-index]");
+      if (projectTrigger) {
+        event.preventDefault();
+        openProjectDialog(Number(projectTrigger.dataset.projectIndex), projectTrigger);
+      }
     }
   });
 
@@ -753,9 +848,27 @@ function bindProjectImageOrientation() {
   window.addEventListener("resize", applyOrientation);
 }
 
+function bindProjectDialog() {
+  if (!app.projectDialog) {
+    return;
+  }
+
+  app.projectDialogClose?.addEventListener("click", closeProjectDialog);
+  app.projectDialog.addEventListener("click", (event) => {
+    if (event.target === app.projectDialog) {
+      closeProjectDialog();
+    }
+  });
+  app.projectDialog.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    closeProjectDialog();
+  });
+}
+
 createMarkup();
 bindNavigation();
 bindAmbientMotion();
 bindProjectImageOrientation();
 bindReveal();
+bindProjectDialog();
 requestAnimationFrame(() => document.body.classList.add("is-booted"));
